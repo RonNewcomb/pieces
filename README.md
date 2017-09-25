@@ -8,12 +8,13 @@ I've seen a language or two where an object's destructor ("dtor") takes care of 
 
 This GC takes the following approach. Objects "decompose" on the clothesline. When the GC processes an object X on the clothesline, for each reference object Y & Z that X owns (as in "strong reference"), the ownership is transferred to the clothesline.  Then the memory for X can be freed because nothing remains in X except value properties and null pointers.  Repeating the process, Y and Z will decompose in their own time as well. 
 
-Basically, since objects are constructed in a smaller-to-larger manner, this GC deconstructs in reverse order, like popping a stack. 
+Basically, since objects are constructed in a smaller-to-larger manner, this GC deconstructs in reverse order, like popping a stack. But the X's dtor finishes *before* Y & Z's dtors begin. 
 
 
 ### GrammarLines
 
 Preliminary version of complish.
+
 
 ### OrdinalWordsToNumber
 
